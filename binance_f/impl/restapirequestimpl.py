@@ -942,15 +942,10 @@ class RestApiRequestImpl(object):
 
         def parse(json_wrapper):
             result = list()
-
-            if symbol:
-                element = LeverageBracket.json_parse(json_wrapper)
+            data_list = json_wrapper.convert_2_array()
+            for item in data_list.get_items():
+                element = LeverageBracket.json_parse(item)
                 result.append(element)
-            else:
-                data_list = json_wrapper.convert_2_array()
-                for item in data_list.get_items():
-                    element = LeverageBracket.json_parse(item)
-                    result.append(element)
 
             return result
 

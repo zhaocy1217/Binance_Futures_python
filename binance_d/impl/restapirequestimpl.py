@@ -346,15 +346,10 @@ class RestApiRequestImpl(object):
 
         def parse(json_wrapper):
             result = list()
-
-            if symbol:
-                element = TickerPriceChangeStatistics.json_parse(json_wrapper)
+            data_list = json_wrapper.convert_2_array()
+            for item in data_list.get_items():
+                element = TickerPriceChangeStatistics.json_parse(item)
                 result.append(element)
-            else:
-                data_list = json_wrapper.convert_2_array()
-                for item in data_list.get_items():
-                    element = TickerPriceChangeStatistics.json_parse(item)
-                    result.append(element)
 
             return result
 
@@ -369,14 +364,10 @@ class RestApiRequestImpl(object):
 
         def parse(json_wrapper):
             result = list()
-            if symbol:
-                element = SymbolPrice.json_parse(json_wrapper)
+            data_list = json_wrapper.convert_2_array()
+            for item in data_list.get_items():
+                element = SymbolPrice.json_parse(item)
                 result.append(element)
-            else:
-                data_list = json_wrapper.convert_2_array()
-                for item in data_list.get_items():
-                    element = SymbolPrice.json_parse(item)
-                    result.append(element)
             return result
 
         request.json_parser = parse
