@@ -9,9 +9,6 @@ class MarkPrice:
         self.markPrice = 0.0
         self.estimatedSettlePrice = 0.0
         self.time = 0
-        self.lastFundingRate = 0.0
-        self.interestRate = 0.0
-        self.nextFundingTime = 0
     
     @staticmethod
     def json_parse(json_data):
@@ -22,8 +19,5 @@ class MarkPrice:
         result.markPrice = json_data.get_float("markPrice")
         result.estimatedSettlePrice = json_data.get_float("estimatedSettlePrice")
         result.time = json_data.get_int("time")
-        result.lastFundingRate = json_data.get_float("lastFundingRate")
-        result.interestRate = json_data.get_float("interestRate")
-        result.nextFundingTime = json_data.get_int("nextFundingTime")
 
         return result
