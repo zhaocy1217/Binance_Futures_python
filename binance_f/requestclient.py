@@ -17,14 +17,17 @@ class RequestClient(object):
         api_key = None
         secret_key = None
         url = RestApiDefine.Url
+        proxies = {}
         if "api_key" in kwargs:
             api_key = kwargs["api_key"]
         if "secret_key" in kwargs:
             secret_key = kwargs["secret_key"]
         if "url" in kwargs:
             url = kwargs["url"]
+        if "proxies" in kwargs:
+            proxies = kwargs["proxies"]
         try:
-            self.request_impl = RestApiRequestImpl(api_key, secret_key, url)
+            self.request_impl = RestApiRequestImpl(api_key, secret_key, url, proxies)
         except Exception:
             pass
         self.limits = {}
